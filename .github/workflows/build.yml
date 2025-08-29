@@ -62,10 +62,10 @@ jobs:
         run: curl -f http://localhost:2718/
 
       - name: Test Capa.py notebook
-        run: curl -f http://localhost:2718/run/Capa.py
+        run: curl -f http://localhost:2718/Capa.py
 
       - name: Test PyGhidra.py notebook
-        run: curl -f http://localhost:2718/run/PyGhidra.py
+        run: curl -f http://localhost:2718/PyGhidra.py
 
       - name: Stop and remove container
         if: always()
