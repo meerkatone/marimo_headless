@@ -42,7 +42,7 @@ To run the Docker container, use the following command:
 docker run -p 2718:2718 -it -v ${PWD}:/local marimo_headless
 ```
 
-This will start a Marimo server on port 2718. You can access it by navigating to `http://localhost:2718` in your web browser.
+This will start a Marimo server on port 2718. Use the link provided in the terminal to connect to the notebook.
 
 ## Included Notebooks
 
