@@ -25,13 +25,13 @@ cd marimo_headless
 To build the Docker image, run the following command in the project's root directory:
 
 ```bash
-docker build -t headless .
+docker build -t marimo_headless .
 ```
 
 For Apple Silicon, you may need to use the following command:
 
 ```bash
-docker build -t headless . --platform=linux/amd64 --no-cache
+docker build -t marimo_headless . --platform=linux/amd64 --no-cache
 ```
 
 ### Run the Docker Container
@@ -39,7 +39,7 @@ docker build -t headless . --platform=linux/amd64 --no-cache
 To run the Docker container, use the following command:
 
 ```bash
-docker run -p 2718:2718 -it -v ${PWD}:/local headless
+docker run -p 2718:2718 -it -v ${PWD}:/local marimo_headless
 ```
 
 This will start a Marimo server on port 2718. You can access it by navigating to `http://localhost:2718` in your web browser.
