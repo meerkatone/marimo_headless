@@ -2,9 +2,23 @@
 
 This project provides a Docker-based environment for reverse engineering and vulnerability research. It combines Ghidra, a software reverse engineering framework, with Marimo, allowing for interactive analysis and visualization of binaries.
 
-## Building and Running
+## Install Docker Desktop on your host machine:
 
-The project is designed to be run within a Docker container.
+https://www.docker.com/products/docker-desktop/
+
+## Running docker without sudo under Linux - from your terminal run the following:
+
+sudo groupadd docker
+
+sudo gpasswd -a $USER docker
+
+sudo usermod -aG docker $USER
+
+## Clone the repo:
+
+git clone https://github.com/meerkatone/marimo_headless.git marimo_headless
+
+cd marimo_headless
 
 ### Build the Docker Image
 
