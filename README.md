@@ -8,17 +8,18 @@ https://www.docker.com/products/docker-desktop/
 
 ## Running docker without sudo under Linux - from your terminal run the following:
 
+```bash
 sudo groupadd docker
-
 sudo gpasswd -a $USER docker
-
 sudo usermod -aG docker $USER
+```
 
 ## Clone the repo:
 
+```bash
 git clone https://github.com/meerkatone/marimo_headless.git marimo_headless
-
 cd marimo_headless
+```
 
 ### Build the Docker Image
 
