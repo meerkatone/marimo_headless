@@ -7,7 +7,7 @@ RUN pacman -S --noconfirm --needed uv zip unzip 7zip git upx jdk-openjdk python3
 ENV VIRTUAL_ENV=/opt/headless
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN uv venv /opt/headless --python 3.11
+RUN uv venv /opt/headless --python 3.12
 RUN source /opt/headless/bin/activate
 RUN uv pip install marimo polars altair duckdb pyarrow fastparquet quak moterm tqdm rich mohtml vegafusion vl-convert-python sqlglot numpy==1.23.5 matplotlib pandas pwntools angr angr-management z3-solver seaborn plotly scikit-learn bokeh==2.4.3 statsmodels scipy ropper keystone-engine pyghidra monkeyhex pyvex bingraphvis angr-utils cfg-explorer
 
