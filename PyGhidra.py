@@ -6,24 +6,25 @@ app = marimo.App(width="medium")
 
 @app.cell(hide_code=True)
 def _():
-    import marimo as mo
-    import os
-    import pandas as pd
-    import seaborn as sns
-    import hashlib
-    import math
     import csv
+    import hashlib
     import itertools
+    import math
+    import os
+    from collections import Counter
+
     import altair as alt
     import duckdb
-    from collections import Counter
+    import marimo as mo
     import matplotlib.pyplot as plt
+    import pandas as pd
+    import seaborn as sns
     return alt, csv, duckdb, mo, os, pd
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h1>Ghidra 11.4.2 and PyGhidra</h1>""")
+    mo.md("""<h1>Ghidra 12.0 and PyGhidra</h1>""")
     return
 
 
@@ -71,21 +72,21 @@ def _(os):
 
 @app.cell
 def _():
-    import pyghidra
-
     from operator import itemgetter
+
+    import pyghidra
 
     pyghidra.start()
 
     import ghidra
     from ghidra.app.util.headless import HeadlessAnalyzer
-    from ghidra.program.flatapi import FlatProgramAPI
     from ghidra.base.project import GhidraProject
-    from java.lang import String
-    from ghidra.program.util import DefinedDataIterator, CyclomaticComplexity
+    from ghidra.program.flatapi import FlatProgramAPI
     from ghidra.program.model.listing import Function
     from ghidra.program.model.symbol import SourceType
+    from ghidra.program.util import CyclomaticComplexity, DefinedDataIterator
     from ghidra.util.exception import CancelledException
+    from java.lang import String
     return CancelledException, CyclomaticComplexity, itemgetter, pyghidra
 
 
@@ -309,8 +310,8 @@ def _(mo):
 @app.cell
 def _(duckdb, mo):
     query1 = """
-    SELECT * 
-    FROM df 
+    SELECT *
+    FROM df
     WHERE Average_Cyclomatic_Complexity > 3
     """
 
