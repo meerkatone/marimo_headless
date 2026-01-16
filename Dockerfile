@@ -12,9 +12,9 @@ RUN source /opt/headless/bin/activate
 RUN uv pip install marimo polars altair duckdb pyarrow fastparquet quak moterm tqdm rich mohtml vegafusion vl-convert-python sqlglot numpy matplotlib pandas pwntools angr angr-management z3-solver seaborn plotly scikit-learn bokeh statsmodels scipy ropper keystone-engine pyghidra monkeyhex pyvex bingraphvis angr-utils cfg-explorer
 
 WORKDIR /opt/src
-RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0_build/ghidra_12.0_PUBLIC_20251205.zip
-RUN unzip ./ghidra_12.0_PUBLIC_20251205.zip
-ENV GHIDRA_INSTALL_DIR="/opt/src/ghidra_12.0_PUBLIC/"
+RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.1_build/ghidra_12.0.1_PUBLIC_20260114.zip
+RUN unzip ./ghidra_12.0.1_PUBLIC_20260114.zip
+ENV GHIDRA_INSTALL_DIR="/opt/src/ghidra_12.0.1_PUBLIC/"
 RUN uv pip install --upgrade pip
 RUN git clone https://github.com/mandiant/capa.git
 WORKDIR /opt/src/capa
