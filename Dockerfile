@@ -9,7 +9,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN uv venv /opt/headless --python 3.13
 RUN source /opt/headless/bin/activate
-RUN uv pip install marimo polars altair duckdb pyarrow fastparquet quak moterm moutils tqdm rich mohtml vegafusion vl-convert-python sqlglot numpy matplotlib pandas pwntools angr angr-management z3-solver seaborn plotly scikit-learn bokeh statsmodels scipy ropper keystone-engine pyghidra monkeyhex pyvex bingraphvis angr-utils cfg-explorer
+RUN uv pip install marimo polars altair duckdb pyarrow fastparquet quak moterm moutils tqdm rich mohtml vegafusion vl-convert-python sqlglot numpy matplotlib pandas pwntools angr angr-management z3-solver seaborn plotly scikit-learn bokeh statsmodels scipy ropper keystone-engine pyghidra pyghidra-mcp monkeyhex pyvex bingraphvis angr-utils cfg-explorer
 
 WORKDIR /opt/src
 RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.2_build/ghidra_12.0.2_PUBLIC_20260129.zip
