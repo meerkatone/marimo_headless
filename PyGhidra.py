@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.15.1"
+__generated_with = "0.20.4"
 app = marimo.App(width="medium")
 
 
@@ -19,18 +19,23 @@ def _():
     import matplotlib.pyplot as plt
     import pandas as pd
     import seaborn as sns
+
     return alt, csv, duckdb, mo, os, pd
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h1>Ghidra 12.0 and PyGhidra</h1>""")
+    mo.md("""
+    <h1>Ghidra 12.0.4 and PyGhidra</h1>
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Downloading Firmware</h2>""")
+    mo.md("""
+    <h2>Downloading Firmware</h2>
+    """)
     return
 
 
@@ -43,7 +48,9 @@ def _(os):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Decompressing Firmware</h2>""")
+    mo.md("""
+    <h2>Decompressing Firmware</h2>
+    """)
     return
 
 
@@ -58,7 +65,9 @@ def _(os):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Creating Directories</h2>""")
+    mo.md("""
+    <h2>Creating Directories</h2>
+    """)
     return
 
 
@@ -87,6 +96,7 @@ def _():
     from ghidra.program.util import CyclomaticComplexity, DefinedDataIterator
     from ghidra.util.exception import CancelledException
     from java.lang import String
+
     return CancelledException, CyclomaticComplexity, itemgetter, pyghidra
 
 
@@ -210,6 +220,7 @@ def _(
         except Exception as e:
             print(f"Error analyzing binary: {str(e)}")
             raise
+
     return (analyze_binary,)
 
 
@@ -223,6 +234,7 @@ def _(analyze_binary, os):
                 if os.path.isfile(binary_path):  # Make sure it's a file
                     print(f"Analyzing binary: {binary_path}")
                     analyze_binary(binary_path)
+
     return (scan_directory,)
 
 
@@ -248,7 +260,9 @@ def _(pd):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Naming Pandas Columns</h2>""")
+    mo.md("""
+    <h2>Naming Pandas Columns</h2>
+    """)
     return
 
 
@@ -291,7 +305,9 @@ def _(df):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Verify the Pandas Output</h2>""")
+    mo.md("""
+    <h2>Verify the Pandas Output</h2>
+    """)
     return
 
 
@@ -303,7 +319,9 @@ def _(df):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Searching for Features</h2>""")
+    mo.md("""
+    <h2>Searching for Features</h2>
+    """)
     return
 
 
@@ -339,7 +357,9 @@ def _(alt, df_sorted):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Creating Charts Using Pandas Bokeh</h2>""")
+    mo.md("""
+    <h2>Creating Charts Using Pandas Bokeh</h2>
+    """)
     return
 
 
@@ -371,6 +391,7 @@ def _(pd):
                 scores.append(float(score))
 
         return pd.DataFrame({"Function_Name": names, "Complexity": scores})
+
     return (extract_func_data,)
 
 
@@ -399,13 +420,24 @@ def _(plot):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Reference Material</h2>""")
+    mo.md("""
+    <h2>Reference Material</h2>
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""- 10 Minutes to Pandas: https://pandas.pydata.org/docs/user_guide/10min.html\n- Pandas Cookbook: https://pandas.pydata.org/docs/user_guide/cookbook.html#cookbook\n- Ghidra API: https://ghidra.re/ghidra_docs/api/index.html\n- PyGhidra: https://github.com/NationalSecurityAgency/ghidra/tree/master/Ghidra/Features/PyGhidra\n- EMUX: https://github.com/therealsaumil/emux\n- Ghidra Snippets: https://github.com/HackOvert/GhidraSnippets\n- Auditing system calls for command injection vulnerabilities using Ghidra's PCode: https://youtu.be/UVNeg7Vqytc\n- cetfor/SystemCallAuditorGhidra.py: https://github.com/HackOvert/PotentiallyVulnerable/blob/main/CWE-78/SystemCallAuditorGhidra.py""")
+    mo.md("""
+    - 10 Minutes to Pandas: https://pandas.pydata.org/docs/user_guide/10min.html
+    - Pandas Cookbook: https://pandas.pydata.org/docs/user_guide/cookbook.html#cookbook
+    - Ghidra API: https://ghidra.re/ghidra_docs/api/index.html
+    - PyGhidra: https://github.com/NationalSecurityAgency/ghidra/tree/master/Ghidra/Features/PyGhidra
+    - EMUX: https://github.com/therealsaumil/emux
+    - Ghidra Snippets: https://github.com/HackOvert/GhidraSnippets
+    - Auditing system calls for command injection vulnerabilities using Ghidra's PCode: https://youtu.be/UVNeg7Vqytc
+    - cetfor/SystemCallAuditorGhidra.py: https://github.com/HackOvert/PotentiallyVulnerable/blob/main/CWE-78/SystemCallAuditorGhidra.py
+    """)
     return
 
 
