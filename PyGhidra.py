@@ -348,7 +348,9 @@ def _(df):
 def _(alt, df_sorted):
     alt.Chart(df_sorted).mark_bar().encode(
         x='File',
-        y='Total_System_Xrefs'
+        y='Total_System_Xrefs',
+        color=alt.Color('Total_System_Xrefs:Q', scale=alt.Scale(scheme='viridis')),
+        tooltip=["Total_System_Xrefs"],
     ).properties(
         title='Potentially Dangerous Calls To System'
     )
@@ -367,7 +369,9 @@ def _(mo):
 def _(alt, df):
     alt.Chart(df).mark_bar().encode(
         x='File',
-        y='Average_Cyclomatic_Complexity'
+        y='Average_Cyclomatic_Complexity',
+        color=alt.Color('Average_Cyclomatic_Complexity:Q', scale=alt.Scale(scheme='viridis')),
+        tooltip=["Average_Cyclomatic_Complexity"],
     ).properties(
         title='Average Cyclomatic Complexity'
     )
@@ -405,7 +409,9 @@ def _(alt, df, extract_func_data):
         # Create bar plot
         plot = alt.Chart(func_data).mark_bar().encode(
             x='Function_Name',
-            y='Complexity'
+            y='Complexity',
+            color=alt.Color('Complexity:Q', scale=alt.Scale(scheme='viridis')),
+        tooltip=["Complexity"],
         ).properties(
             title=f"Top 10 High Complexity Functions in {binary_name}"
         )
