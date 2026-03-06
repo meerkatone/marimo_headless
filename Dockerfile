@@ -1,8 +1,9 @@
 FROM archlinux:latest
 ENV TZ=Europe/London
 
-RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm --needed uv zip unzip 7zip git upx jdk-openjdk python3 lldb curl wget zsh binwalk squashfs-tools
+RUN pacman -Syu --noconfirm --disable-sandbox
+
+RUN pacman -S --noconfirm --needed --disable-sandbox uv zip unzip 7zip git upx jdk-openjdk python3 lldb curl wget zsh binwalk squashfs-tools
 
 ENV VIRTUAL_ENV=/opt/headless
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
