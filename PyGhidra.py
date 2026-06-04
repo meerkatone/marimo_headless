@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.20.4"
+__generated_with = "0.23.8"
 app = marimo.App(width="medium")
 
 
@@ -26,7 +26,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    <h1>Ghidra 12.0.4 and PyGhidra</h1>
+    <h1>Ghidra 12.1 and PyGhidra</h1>
     """)
     return
 
@@ -326,14 +326,23 @@ def _(mo):
 
 
 @app.cell
-def _(duckdb, mo):
+def _(df, duckdb, mo):
     query1 = """
     SELECT *
     FROM df
     WHERE Average_Cyclomatic_Complexity > 3
     """
 
-    sim = duckdb.query(query1).to_df()
+    # Use an explicit, short-lived connection instead of duckdb's implicit
+    # global default connection. The global connection's C++ destructor runs at
+    # interpreter shutdown and calls PyEval_SaveThread on a thread state that
+    # PyGhidra's embedded JVM has already torn down, which segfaults the process.
+    con = duckdb.connect()
+    try:
+        con.register("df", df)
+        sim = con.execute(query1).df()
+    finally:
+        con.close()
     mo.ui.dataframe(sim)
     return
 

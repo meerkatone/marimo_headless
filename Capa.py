@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.15.1"
+__generated_with = "0.23.8"
 app = marimo.App(width="medium")
 
 
@@ -8,18 +8,23 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
     import os
+
     return mo, os
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h1>Capa</h1>""")
+    mo.md("""
+    <h1>Capa</h1>
+    """)
     return
 
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("""<h2>Get plugx RAT sample</h2>""")
+    mo.md("""
+    <h2>Get plugx RAT sample</h2>
+    """)
     return
 
 

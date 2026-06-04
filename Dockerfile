@@ -3,7 +3,13 @@ ENV TZ=Europe/London
 
 RUN pacman -Syu --noconfirm --disable-sandbox
 
-RUN pacman -S --noconfirm --needed --disable-sandbox uv zip unzip 7zip git upx jdk-openjdk python3 lldb curl wget zsh binwalk squashfs-tools
+# Ghidra 12.1 is built/tested against JDK 21 LTS. Newer JDKs (e.g. OpenJDK 26)
+# cause native instability with PyGhidra's embedded JVM, so pin JDK 21 explicitly.
+RUN pacman -S --noconfirm --needed --disable-sandbox uv zip unzip 7zip git upx jdk21-openjdk python3 lldb curl wget zsh binwalk squashfs-tools
+
+# Make JDK 21 the JVM PyGhidra picks up.
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+ENV PATH="$JAVA_HOME/bin:$PATH"
 
 ENV VIRTUAL_ENV=/opt/headless
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
@@ -13,10 +19,10 @@ RUN source /opt/headless/bin/activate
 RUN uv pip install marimo polars altair duckdb pyarrow fastparquet quak moterm moutils tqdm rich mohtml vegafusion vl-convert-python sqlglot numpy matplotlib pandas pwntools angr angr-management z3-solver seaborn plotly scikit-learn bokeh statsmodels scipy ropper keystone-engine pyghidra pyghidra-mcp monkeyhex pyvex bingraphvis angr-utils cfg-explorer
 
 WORKDIR /opt/src
-RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.0.4_build/ghidra_12.0.4_PUBLIC_20260303.zip
-RUN unzip ./ghidra_12.0.4_PUBLIC_20260303.zip
+RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1_build/ghidra_12.1_PUBLIC_20260513.zip
+RUN unzip ./ghidra_12.1_PUBLIC_20260513.zip
 
-ENV GHIDRA_INSTALL_DIR="/opt/src/ghidra_12.0.4_PUBLIC/"
+ENV GHIDRA_INSTALL_DIR="/opt/src/ghidra_12.1_PUBLIC/"
 RUN uv pip install --upgrade pip
 RUN git clone https://github.com/mandiant/capa.git
 WORKDIR /opt/src/capa
