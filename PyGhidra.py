@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.8"
+__generated_with = "0.23.9"
 app = marimo.App(width="medium")
 
 
@@ -26,7 +26,7 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md("""
-    <h1>Ghidra 12.1 and PyGhidra</h1>
+    <h1>Ghidra 12.1.2 and PyGhidra</h1>
     """)
     return
 
